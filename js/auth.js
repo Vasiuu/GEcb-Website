@@ -1,6 +1,5 @@
 /* ============================================
    GEC BHUJ - AUTH MODULE (auth.js)
-   Place in: ee/auth.js
    Include in: <script src="auth.js"></script>
    ============================================ */
 
@@ -8,37 +7,7 @@ const Auth = (function() {
     'use strict';
 
     const SESSION_KEY = 'gec_auth_session';
-    
-    // Demo users (replace with API call in production)
-    const USERS = [
-        {
-            username: '240153109018',
-            password: '0000',
-            name: 'Vasu Pathak',
-            enrollment: '210151090018',
-            department: 'Electrical Engineering',
-            semester: 'Sem-6',
-            role: 'student'
-        },
-        {
-            username: '210150111002',
-            password: 'student123',
-            name: 'Priya Sharma',
-            enrollment: '220010111002',
-            department: 'Electrical Engineering',
-            semester: 'Sem-6',
-            role: 'student'
-        },
-        {
-            username: 'admin',
-            password: 'admin123',
-            name: 'Dr. Admin User',
-            enrollment: 'ADMIN001',
-            department: 'Electrical Engineering',
-            semester: 'N/A',
-            role: 'admin'
-        }
-    ];
+    const API_BASE = 'http://localhost:5000/api';
 
     // Check if user is authenticated
     function isAuthenticated() {
@@ -70,27 +39,41 @@ const Auth = (function() {
         }
     }
 
-    // Login user
-    function login(username, password) {
-        const user = USERS.find(u => u.username === username && u.password === password);
-        
-        if (user) {
+    // Login user via backend API
+    async function login(username, password) {
+        try {
+            const res = await fetch(`${API_BASE}/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (!res.ok) {
+                const errData = await res.json();
+                return { success: false, error: errData.error || 'Invalid credentials' };
+            }
+
+            const data = await res.json();
             const sessionData = {
-                username: user.username,
-                name: user.name,
-                enrollment: user.enrollment,
-                department: user.department,
-                semester: user.semester,
-                role: user.role,
+                token: data.token,
+                username: data.user.username,
+                name: data.user.name,
+                enrollment: data.user.enrollment || data.user.username,
+                department: data.user.department,
+                semester: data.user.semester,
+                role: data.user.role,
                 loginTime: new Date().toISOString(),
                 expires: new Date().getTime() + (24 * 60 * 60 * 1000) // 24 hours
             };
             
             localStorage.setItem(SESSION_KEY, JSON.stringify(sessionData));
             return { success: true, user: sessionData };
+        } catch (err) {
+            console.error('Authentication error:', err);
+            return { success: false, error: 'Connection to server failed' };
         }
-        
-        return { success: false, error: 'Invalid credentials' };
     }
 
     // Logout user
