@@ -36,14 +36,12 @@ const globalLimiter = rateLimit({
 });
 app.use('/api/', globalLimiter);
 
-// 4. Enable CORS with credentials/localhost support
-const corsOptions = {
-  origin: true,
+// 4. Enable CORS supporting any origin (including file:// schemes)
+app.use(cors({
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
-  credentials: true
-};
-app.use(cors(corsOptions));
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Cookie Parser for secure cookie-based operations
 app.use(cookieParser());
