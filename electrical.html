@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Electrical Engineering | GEC Bhuj</title>
+<meta content="Department of Electrical Engineering at Government Engineering College, Bhuj. Offering BE and ME programs affiliated with GTU and approved by AICTE." name="description">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#ffddb3",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "surface-container-high": "#e7e8e9",
+                      "surface-variant": "#e1e3e4",
+                      "surface": "#f8f9fa",
+                      "on-secondary-fixed-variant": "#633f00",
+                      "tertiary-fixed": "#d3e4fe",
+                      "inverse-surface": "#2e3132",
+                      "primary-container": "#003366",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f8f9fa",
+                      "on-primary-fixed-variant": "#1f477b",
+                      "error": "#ba1a1a",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "primary-fixed": "#d5e3ff",
+                      "on-surface": "#191c1d",
+                      "surface-container-highest": "#e1e3e4",
+                      "secondary-fixed-dim": "#ffb951",
+                      "on-tertiary-container": "#8c9cb5",
+                      "on-background": "#191c1d",
+                      "error-container": "#ffdad6",
+                      "on-error-container": "#93000a",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "on-secondary-container": "#684300",
+                      "on-surface-variant": "#43474f",
+                      "inverse-primary": "#a7c8ff",
+                      "surface-dim": "#d9dadb",
+                      "on-secondary-fixed": "#291800",
+                      "outline": "#737780",
+                      "tertiary-container": "#243448",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f3f4f5",
+                      "secondary": "#825500",
+                      "on-primary-fixed": "#001b3c",
+                      "secondary-container": "#fdab12",
+                      "surface-container": "#edeeef",
+                      "primary-fixed-dim": "#a7c8ff",
+                      "primary": "#001e40",
+                      "surface-tint": "#3a5f94",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#799dd6",
+                      "background": "#f8f9fa"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Playfair Display"],
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Playfair Display"],
+                      "display-lg": ["Playfair Display"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Playfair Display"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .lab-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+        .lab-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px -5px rgba(0, 51, 102, 0.12);
+        }
+        html {
+            scroll-padding-top: 100px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-surface border-b border-outline-variant shadow-sm h-20 flex items-center">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="electric_bolt">electric_bolt</span>
+<div class="font-headline-md text-headline-md font-bold text-primary">GEC Bhuj EE</div>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#home">Home</a>
+<a class="text-primary border-b-2 border-secondary font-bold pb-1 font-label-md text-label-md" href="#faculty">Faculty</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#labs">Labs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#programs">Programs</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#events">Events</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#contact">Contact</a>
+</nav>
+
+<!-- LOGIN LINK - THIS IS THE FIX: <a> tag instead of <button> -->
+<a href="login.html" class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label-md text-label-md font-bold hover:bg-primary-container transition-all active:scale-95 inline-flex items-center">
+    Login
+</a>
+
+</div>
+</header>
+
+<main>
+<!-- Hero Section -->
+<section id="home" class="relative min-h-[70vh] flex items-center bg-surface overflow-hidden scroll-mt-24">
+<div class="absolute right-0 top-0 w-1/2 h-full opacity-10 pointer-events-none">
+<div class="w-full h-full" style="background-image: radial-gradient(circle at center, #003366 1px, transparent 1px); background-size: 30px 30px;"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-20">
+<div class="lg:col-span-7 z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full text-label-sm font-bold mb-6">
+<span class="material-symbols-outlined text-sm" data-icon="school">school</span>
+<span class="">ESTD 1994</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary mb-6 leading-tight">
+                        Department of <br>
+<span class="text-secondary">Electrical Engineering</span>
+</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant mb-8 max-w-2xl leading-relaxed">
+                        Pioneering technical education in the Kachchh district, our department offers comprehensive Undergraduate and Postgraduate programs. We empower future engineers through a blend of rigorous academics, GTU-affiliated curricula, and hands-on laboratory exploration.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-primary text-on-primary px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:shadow-lg transition-shadow" href="#programs">
+                            Explore Programs <span class="material-symbols-outlined" data-icon="arrow_downward">arrow_downward</span>
+</a>
+<a class="border border-primary text-primary px-8 py-4 rounded-xl font-bold hover:bg-primary hover:text-on-primary transition-all" href="#labs">
+                            View Facilities
+                        </a>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-square rounded-2xl overflow-hidden shadow-2xl relative z-10 border-8 border-surface">
+<img alt="Department Lab Facilities" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRl2-MRN73VM0B7_0vVjHxPCw0ySIlHxvT7gtbPM7YvP5I9ArR-NglMwMEjj5XAEidyEDAmNVmxahPnRHMskeVs7BfopeOKvRRz0M-eCDbtv3TCac9AV-JJAKBzXtD2gC7bg1sDWU77ZWrjpv1T1hf-cv-QkbKuVAOUGjUKm3LCwNiqmNaI7TRo38kMuI-QplnYrFHQeUzJhUAliWzvToedjN8emZM31gXVmKp70xf_uIy_yleiNuKgMZm5NKW6mb5nHzxjx_NERSz">
+</div>
+<div class="absolute -bottom-6 -left-6 w-48 h-48 bg-secondary-container rounded-2xl -z-0 opacity-20"></div>
+<div class="absolute -top-6 -right-6 w-32 h-32 bg-primary-container rounded-full -z-0 opacity-10"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Academic Programs -->
+<section class="py-24 bg-surface-container-low scroll-mt-24" id="programs">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4 transition-all duration-700 opacity-100">Academic Programs</h2>
+<div class="w-24 h-1 bg-secondary mx-auto rounded-full"></div>
+<p class="mt-6 text-on-surface-variant max-w-xl mx-auto">Approved by AICTE and Affiliated with Gujarat Technological University (GTU).</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- BE Program -->
+<div class="bg-surface-container-lowest p-10 rounded-2xl shadow-sm border border-outline-variant hover:border-primary transition-colors flex flex-col group">
+<div class="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-3xl" data-icon="engineering">engineering</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Bachelor of Engineering</h3>
+<p class="text-on-surface-variant mb-6 flex-grow">A 4-year undergraduate program focusing on core electrical engineering principles, power systems, and modern automation technologies.</p>
+<div class="flex items-center gap-4 text-label-md font-bold text-secondary">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="verified">verified</span> AICTE Approved</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="account_balance">account_balance</span> Affiliated to GTU</span>
+</div>
+</div>
+<!-- ME Program -->
+<div class="bg-surface-container-lowest p-10 rounded-2xl shadow-sm border border-outline-variant hover:border-primary transition-colors flex flex-col group">
+<div class="w-16 h-16 bg-secondary-fixed rounded-xl flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-3xl" data-icon="psychology">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Master of Engineering</h3>
+<p class="text-on-surface-variant font-bold mb-2">Specialization: Power System Engineering</p>
+<p class="text-on-surface-variant mb-6 flex-grow">An advanced 2-year postgraduate program designed for deep technical expertise and research-oriented learning in power grid stability and management.</p>
+<div class="flex items-center gap-4 text-label-md font-bold text-secondary">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="verified">verified</span> AICTE Approved</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="account_balance">account_balance</span> Affiliated to GTU</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Department Labs Grid (Bento Style) -->
+<section class="py-24 bg-surface scroll-mt-24" id="labs">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4 transition-all duration-700 opacity-100">Department Laboratories</h2>
+<p class="text-on-surface-variant">Specialized research and training facilities for practical excellence.</p>
+</div>
+<div class="bento-grid">
+<!-- Main Lab -->
+<div class="col-span-12 md:col-span-8 bg-primary-container text-on-primary p-8 rounded-3xl lab-card relative overflow-hidden h-[400px] flex flex-col justify-end transition-all duration-700 opacity-100">
+<div class="absolute top-8 right-8">
+<span class="material-symbols-outlined text-6xl opacity-20" data-icon="bolt">bolt</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">Power System Lab</h3>
+<p class="text-on-primary-container max-w-md">Equipped with simulation tools and high-grade analyzers for studying complex electrical grids and load distribution.</p>
+<div class="mt-6 flex gap-2">
+<span class="px-3 py-1 bg-white/10 rounded-full text-xs">Simulink</span>
+<span class="px-3 py-1 bg-white/10 rounded-full text-xs">Load Flow Analyzers</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container p-8 rounded-3xl lab-card border border-outline-variant transition-all duration-700 opacity-100">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4" data-icon="settings_input_component">settings_input_component</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Electrical Machine Lab</h3>
+<p class="text-on-surface-variant text-sm">Testing ground for various AC/DC motors, generators, and transformer performance characteristics.</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container p-8 rounded-3xl lab-card border border-outline-variant transition-all duration-700 opacity-100">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="precision_manufacturing">precision_manufacturing</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Control System Lab</h3>
+<p class="text-on-surface-variant text-sm">Focusing on linear and non-linear system modeling with experimental kits for feedback mechanisms.</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-secondary text-on-primary p-8 rounded-3xl lab-card transition-all duration-700 opacity-100">
+<span class="material-symbols-outlined text-white text-4xl mb-4" data-icon="flash_on">flash_on</span>
+<h3 class="font-headline-md text-headline-md mb-2">High Voltage Lab</h3>
+<p class="opacity-90 text-sm">Specialized infrastructure for insulation testing and high-tension discharge experiments.</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container p-8 rounded-3xl lab-card border border-outline-variant transition-all duration-700 opacity-100">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="memory">memory</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Microprocessor Lab</h3>
+<p class="text-on-surface-variant text-sm">Modern development kits for 8085/8086 microprocessors and microcontroller interfacing.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Events & Training -->
+<section class="py-24 bg-surface-container-lowest scroll-mt-24" id="events">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2 transition-all duration-700 opacity-100">Latest Events &amp; Training</h2>
+<p class="text-on-surface-variant">Bridging the gap between academia and industry.</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 group">
+                        View All Events <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Event 1 -->
+<div class="flex flex-col md:flex-row gap-6 p-6 rounded-2xl bg-surface-container-low border border-outline-variant hover:shadow-md transition-shadow">
+<div class="md:w-1/3 aspect-square rounded-xl overflow-hidden bg-surface-container-highest">
+<div class="w-full h-full flex items-center justify-center bg-primary text-on-primary font-bold text-center p-4">
+<div>
+<div class="text-3xl">JAN</div>
+<div class="text-xl">2025</div>
+</div>
+</div>
+</div>
+<div class="md:w-2/3">
+<span class="text-label-sm font-bold text-secondary uppercase tracking-wider">Industrial Training</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-2 mb-3">PLC Training at IGTR Ahmedabad</h3>
+<p class="text-on-surface-variant text-sm mb-4">Final year EED students underwent intensive training on Programmable Logic Controllers under RUSA funding to enhance industry readiness.</p>
+<span class="inline-flex items-center gap-1 text-primary text-sm font-bold"><span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span> IGTR Ahmedabad</span>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex flex-col md:flex-row gap-6 p-6 rounded-2xl bg-surface-container-low border border-outline-variant hover:shadow-md transition-shadow">
+<div class="md:w-1/3 aspect-square rounded-xl overflow-hidden">
+<div class="w-full h-full flex items-center justify-center bg-secondary text-on-primary font-bold text-center p-4">
+<div>
+<div class="text-3xl">FEB</div>
+<div class="text-xl">2025</div>
+</div>
+</div>
+</div>
+<div class="md:w-2/3">
+<span class="text-label-sm font-bold text-secondary uppercase tracking-wider">Workshop</span>
+<h3 class="font-headline-md text-headline-md text-primary mt-2 mb-3">'GO ELECTRIC' Campaign</h3>
+<p class="text-on-surface-variant text-sm mb-4">Energy conservation awareness workshop organized in collaboration with GERMI to promote sustainable EV solutions.</p>
+<span class="inline-flex items-center gap-1 text-primary text-sm font-bold"><span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span> Main Seminar Hall</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Syllabus & Materials -->
+<section class="py-24 bg-primary text-on-primary scroll-mt-24" id="resources">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-6 transition-all duration-700 opacity-100">Academic Resources</h2>
+<p class="text-on-primary-container text-body-lg mb-10">Access the latest syllabus, comprehensive study materials, and curated collections of previous year question papers to excel in your academic journey.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<button class="bg-white text-primary p-4 rounded-xl font-bold flex items-center justify-between hover:bg-secondary-fixed transition-colors">
+                            GTU Syllabus <span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+<button class="bg-white/10 text-on-primary p-4 rounded-xl font-bold flex items-center justify-between hover:bg-white/20 transition-colors">
+                            Study Materials <span class="material-symbols-outlined" data-icon="description">description</span>
+</button>
+<button class="bg-white/10 text-on-primary p-4 rounded-xl font-bold flex items-center justify-between hover:bg-white/20 transition-colors">
+                            Question Papers <span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+</button>
+<button class="bg-secondary-container text-primary p-4 rounded-xl font-bold flex items-center justify-between">
+                            Academic Calendar <span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</button>
+</div>
+</div>
+<div class="bg-white/5 border border-white/10 rounded-3xl p-12 relative overflow-hidden">
+<div class="absolute -right-10 -top-10">
+<span class="material-symbols-outlined text-[180px] opacity-10" data-icon="book_5">book_5</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md mb-4 text-secondary-fixed">Online Portal</h3>
+<p class="mb-8 opacity-80">Access the student management system for internal marks, attendance, and exam registrations.</p>
+<a class="inline-flex items-center gap-2 border-b-2 border-secondary pb-1 font-bold" href="https://gtu.ac.in/" target="_blank">Visit GTU Portal <span class="material-symbols-outlined" data-icon="open_in_new">open_in_new</span></a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Faculty Profiles -->
+<section class="py-24 bg-surface scroll-mt-24" id="faculty">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4 transition-all duration-700 opacity-100">Distinguished Faculty</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Our department is led by experienced academic professionals committed to research and mentorship.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Faculty Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant hover:shadow-xl transition-all group">
+<div class="aspect-[3/4] bg-surface-container-high relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl opacity-30" data-icon="person">person</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Dr. [Name]</h4>
+<p class="text-secondary text-label-sm font-bold mb-3 uppercase tracking-tighter">Head of Department</p>
+<p class="text-on-surface-variant text-sm mb-4">Ph.D. in Power Systems, M.E. (EE)</p>
+<a class="text-primary text-sm font-bold flex items-center gap-1" href="#">Profile Details <span class="material-symbols-outlined text-xs" data-icon="north_east">north_east</span></a>
+</div>
+</div>
+<!-- Faculty Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant hover:shadow-xl transition-all">
+<div class="aspect-[3/4] bg-surface-container-high relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl opacity-30" data-icon="person">person</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Prof. [Name]</h4>
+<p class="text-secondary text-label-sm font-bold mb-3 uppercase tracking-tighter">Assistant Professor</p>
+<p class="text-on-surface-variant text-sm mb-4">M.E. in Power Electronics</p>
+<a class="text-primary text-sm font-bold flex items-center gap-1" href="#">Profile Details <span class="material-symbols-outlined text-xs" data-icon="north_east">north_east</span></a>
+</div>
+</div>
+<!-- Faculty Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant hover:shadow-xl transition-all">
+<div class="aspect-[3/4] bg-surface-container-high relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl opacity-30" data-icon="person">person</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Prof. [Name]</h4>
+<p class="text-secondary text-label-sm font-bold mb-3 uppercase tracking-tighter">Assistant Professor</p>
+<p class="text-on-surface-variant text-sm mb-4">M.Tech (Machine Design)</p>
+<a class="text-primary text-sm font-bold flex items-center gap-1" href="#">Profile Details <span class="material-symbols-outlined text-xs" data-icon="north_east">north_east</span></a>
+</div>
+</div>
+<!-- Faculty Card 4 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant hover:shadow-xl transition-all">
+<div class="aspect-[3/4] bg-surface-container-high relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl opacity-30" data-icon="person">person</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-headline-md text-headline-md text-primary mb-1">Prof. [Name]</h4>
+<p class="text-secondary text-label-sm font-bold mb-3 uppercase tracking-tighter">Lecturer</p>
+<p class="text-on-surface-variant text-sm mb-4">B.E. Electrical (Hons)</p>
+<a class="text-primary text-sm font-bold flex items-center gap-1" href="#">Profile Details <span class="material-symbols-outlined text-xs" data-icon="north_east">north_east</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-24 bg-surface-container scroll-mt-24" id="contact">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="bg-surface-container-lowest rounded-[40px] shadow-2xl overflow-hidden flex flex-col lg:flex-row">
+<div class="lg:w-1/2 p-12 md:p-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8 transition-all duration-700 opacity-100">Get in Touch</h2>
+<div class="space-y-8">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Office Address</h4>
+<p class="text-on-surface-variant">Electrical Dept, GEC Bhuj, Mirzapar Road, Bhuj-Kutch, Gujarat 370001</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="call">call</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Contact Numbers</h4>
+<p class="text-on-surface-variant">(02832)-231164 | Ext. 402</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-1">Email Address</h4>
+<p class="text-on-surface-variant">ee-dept-gecbhuj@gujarat.gov.in</p>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-12 border-t border-outline-variant flex gap-4">
+<a class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white" href="#"><span class="material-symbols-outlined text-sm" data-icon="share">share</span></a>
+<a class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white" href="#"><span class="material-symbols-outlined text-sm" data-icon="public">public</span></a>
+</div>
+</div>
+<div class="lg:w-1/2 min-h-[400px] relative">
+<div class="absolute inset-0 grayscale opacity-50 contrast-125">
+<div class="w-full h-full bg-slate-200 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-6xl" data-icon="map">map</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary/10"></div>
+<div class="relative h-full flex items-center justify-center p-8">
+<div class="bg-white p-8 rounded-2xl shadow-xl max-w-sm">
+<h3 class="font-bold text-primary mb-2">Visit Campus</h3>
+<p class="text-sm text-on-surface-variant mb-6">Located near Uma Nagar, Mirzapar Road. Open Mon-Sat: 10:30 AM - 6:10 PM.</p>
+<button class="w-full py-3 bg-secondary text-white font-bold rounded-xl flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="directions">directions</span> Get Directions
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-primary-container text-on-primary">
+<div class="max-w-container-max mx-auto px-margin-desktop py-16">
+<div class="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
+<div class="max-w-xs">
+<div class="font-headline-md text-headline-md text-on-primary font-bold mb-4">GEC Bhuj</div>
+<p class="text-on-primary-container text-sm leading-relaxed">Dedicated to excellence in engineering education and building a sustainable future for the Kachchh region through innovation and expertise.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+<div>
+<h4 class="font-bold text-secondary-fixed mb-6 uppercase tracking-wider text-xs">Navigation</h4>
+<ul class="space-y-4 text-sm text-on-primary-container">
+<li class=""><a class="hover:text-secondary-fixed transition-colors" href="#home">Home</a></li>
+<li class=""><a class="hover:text-secondary-fixed transition-colors" href="#programs">Programs</a></li>
+<li class=""><a class="hover:text-secondary-fixed transition-colors" href="#labs">Labs</a></li>
+<li class=""><a class="hover:text-secondary-fixed transition-colors" href="#faculty">Faculty</a></li>
+<li class=""><a class="hover:text-secondary-fixed transition-colors" href="#contact">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-secondary-fixed mb-6 uppercase tracking-wider text-xs">Portals</h4>
+<ul class="space-y-4 text-sm text-on-primary-container">
+<li class=""><a class="hover:text-secondary-fixed transition-colors" href="https://www.aicte-india.org/" target="_blank">AICTE</a></li>
+<li class=""><a class="hover:text-secondary-fixed transition-colors" href="https://gtu.ac.in/" target="_blank">GTU Portal</a></li>
+<li class=""><a class="hover:text-secondary-fixed transition-colors" href="#">Digital Gujarat</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-secondary-fixed mb-6 uppercase tracking-wider text-xs">Contact Info</h4>
+<ul class="space-y-4 text-sm text-on-primary-container">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs" data-icon="phone">phone</span> 02832-231164</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs" data-icon="mail">mail</span> info@gecbhuj.ac.in</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-label-sm text-on-primary-container">
+<p class="">© 2024 Government Engineering College, Bhuj. All Rights Reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">Anti Ragging</a>
+<a class="hover:text-white transition-colors" href="#">Grievance Redressal</a>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- FAB for Admission -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="bg-secondary-container text-primary-container px-6 py-4 rounded-full shadow-2xl flex items-center gap-3 font-bold hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span> Admission 2025
+        </button>
+</div>
+
+<script>
+        // Smooth reveal animations on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('translate-y-8', 'opacity-0');
+                }
+            });
+        }, observerOptions);
+
+        // Only apply scroll animation to lab cards, NOT to section headings
+        document.querySelectorAll('.lab-card').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'translate-y-8', 'opacity-0');
+            observer.observe(el);
+        });
+</script>
+
+</body>
+</html>

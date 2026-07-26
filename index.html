@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Government Engineering College Bhuj - Pioneering Engineering Excellence in Kutch since 1994. Affiliated with GTU, approved by AICTE.">
+    <title>GEC Bhuj | Government Engineering College, Kutch</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#001e40',
+                        'primary-container': '#003366',
+                        'primary-fixed': '#d5e3ff',
+                        'primary-fixed-dim': '#a7c8ff',
+                        secondary: '#825500',
+                        'secondary-container': '#fdab12',
+                        'secondary-fixed': '#ffddb3',
+                        'secondary-fixed-dim': '#ffb951',
+                        tertiary: '#0e1f32',
+                        'tertiary-container': '#243448',
+                        'tertiary-fixed': '#d3e4fe',
+                        'tertiary-fixed-dim': '#b7c8e1',
+                        surface: '#f8f9fa',
+                        'surface-dim': '#d9dadb',
+                        'surface-bright': '#f8f9fa',
+                        'surface-container': '#edeeef',
+                        'surface-container-low': '#f3f4f5',
+                        'surface-container-lowest': '#ffffff',
+                        'surface-container-high': '#e7e8e9',
+                        'surface-container-highest': '#e1e3e4',
+                        background: '#f8f9fa',
+                        'on-primary': '#ffffff',
+                        'on-primary-container': '#799dd6',
+                        'on-primary-fixed': '#001b3c',
+                        'on-secondary': '#ffffff',
+                        'on-secondary-container': '#684300',
+                        'on-secondary-fixed': '#291800',
+                        'on-tertiary': '#ffffff',
+                        'on-tertiary-container': '#8c9cb5',
+                        'on-tertiary-fixed': '#0b1c30',
+                        'on-surface': '#191c1d',
+                        'on-surface-variant': '#43474f',
+                        'on-background': '#191c1d',
+                        outline: '#737780',
+                        'outline-variant': '#c3c6d1',
+                        error: '#ba1a1a',
+                        'error-container': '#ffdad6',
+                        'on-error': '#ffffff',
+                        'on-error-container': '#93000a',
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Material Symbols */
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            vertical-align: middle;
+        }
+
+        /* Glass Header */
+        .glass-header {
+            background: rgba(248, 249, 250, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(195, 198, 209, 0.3);
+        }
+        .glass-header.scrolled {
+            background: rgba(248, 249, 250, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 30, 64, 0.08);
+        }
+
+        /* Nav Link */
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            padding-bottom: 4px;
+            color: #737780;
+            transition: color 0.2s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #fdab12;
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after { width: 100%; }
+        .nav-link.active { color: #001e40; font-weight: 600; }
+        .nav-link:hover { color: #001e40; }
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: #fdab12;
+            color: #684300;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 8px 24px rgba(253, 171, 18, 0.25);
+            transform: translateY(-2px);
+        }
+        .btn-primary .material-symbols-outlined {
+            transition: transform 0.2s ease;
+        }
+        .btn-primary:hover .material-symbols-outlined {
+            transform: translateX(4px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: transparent;
+            color: #001e40;
+            border: 1px solid #c3c6d1;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: #fdab12;
+            background: #f3f4f5;
+        }
+
+        /* Cards */
+        .news-card {
+            background: #ffffff;
+            border: 1px solid rgba(195, 198, 209, 0.3);
+            border-radius: 12px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .news-card:hover {
+            transform: translateY(-6px);
+            border-color: #fdab12;
+            box-shadow: 0 8px 24px rgba(0, 30, 64, 0.08), 0 2px 8px rgba(0, 30, 64, 0.04);
+        }
+
+        .dept-card {
+            background: #f3f4f5;
+            border: 1px solid transparent;
+            border-radius: 40px;
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dept-card:hover {
+            background: #ffffff;
+            border-color: #fdab12;
+            box-shadow: 0 25px 50px rgba(0, 30, 64, 0.05);
+            transform: translateY(-8px);
+        }
+        .dept-card .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: rgba(213, 227, 255, 0.3);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dept-card:hover .icon-wrapper {
+            transform: scale(1.1);
+            background: rgba(213, 227, 255, 0.5);
+        }
+        .dept-card .dept-desc {
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 280px;
+            color: #43474f;
+            font-size: 14px;
+        }
+        .dept-card:hover .dept-desc {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-card {
+            aspect-ratio: 1;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .stat-card:hover {
+            transform: scale(1.03);
+        }
+
+        /* Ambient Card Shadow */
+        .ambient-card-shadow {
+            box-shadow: 0 1px 3px rgba(0, 30, 64, 0.04), 0 4px 12px rgba(0, 30, 64, 0.06);
+            transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .ambient-card-shadow:hover {
+            box-shadow: 0 12px 32px rgba(0, 30, 64, 0.1), 0 4px 12px rgba(0, 30, 64, 0.06);
+            transform: translateY(-4px);
+        }
+
+        /* Accordion */
+        .accordion-item {
+            background: #ffffff;
+            border: 1px solid rgba(195, 198, 209, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 30, 64, 0.04);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+        .accordion-item:hover {
+            box-shadow: 0 4px 16px rgba(0, 30, 64, 0.06);
+        }
+        .accordion-item summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            cursor: pointer;
+            list-style: none;
+            transition: background 0.2s ease;
+        }
+        .accordion-item summary::-webkit-details-marker { display: none; }
+        .accordion-item summary:hover { background: #f3f4f5; }
+        .accordion-item summary .material-symbols-outlined {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item[open] summary .material-symbols-outlined {
+            transform: rotate(180deg);
+        }
+        .accordion-item .content {
+            padding: 0 24px 24px;
+            color: #43474f;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Dropdown */
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 8px);
+            width: 260px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 30, 64, 0.12);
+            border: 1px solid rgba(195, 198, 209, 0.2);
+            overflow: hidden;
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px) scale(0.96);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dropdown-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #191c1d;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.2s ease;
+            border-radius: 8px;
+            margin: 4px 8px;
+        }
+        .dropdown-item:hover { background: #f3f4f5; }
+        .dropdown-item .material-symbols-outlined { color: #001e40; font-size: 18px; }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            z-index: 40;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-nav-link {
+            display: block;
+            padding: 16px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin-bottom: 8px;
+            color: #737780;
+        }
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            background: #f3f4f5;
+            color: #001e40;
+        }
+
+        /* Footer */
+        .footer-link {
+            display: inline-block;
+            color: #8c9cb5;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .footer-link:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background: #243448;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .social-btn:hover {
+            background: #ffddb3;
+            color: #291800;
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        /* Image Zoom */
+        .img-zoom { overflow: hidden; }
+        .img-zoom img {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .img-zoom:hover img { transform: scale(1.05); }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        .animate-pulse-slow {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8f9fa; }
+        ::-webkit-scrollbar-thumb { background: #c3c6d1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #737780; }
+
+        /* Selection */
+        ::selection {
+            background: #ffddb3;
+            color: #291800;
+        }
+    </style>
+<base target="_blank">
+</head>
+
+<body class="bg-surface text-on-surface font-body antialiased">
+
+    <!-- Header -->
+    <header class="glass-header sticky top-0 z-50 w-full h-20 flex items-center border-b border-outline-variant/50">
+        <div class="max-w-container-max mx-auto w-full px-6 md:px-16 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-4">
+                <img alt="GEC Bhuj Logo" 
+                     class="h-14 w-auto object-contain" 
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7FDXJw-MXZVN1if5QnROAXMYbnvluRLaww3fJS7Ihuf5jDcwDzZmXWadNkAagEfU1M3rGz2Be8gT7nlCDca2CksgsbObMdBsDRV_FvlEYIqu6-_CQ7zeWyWdANZq6wfI4kkhTVx92hRLfnEO37k0sdNQGMpuA6mY6REHJYWPDDZ8freY9kQqhI9tQPK-TBZue3RUDMA5ttQZpjVQiOYLsdoFNCGAhOq18L-YeDTb6fZ3jkhGMItrNlH3CSKc4qjwPiGLJ1CSp7mN2" 
+                     loading="eager"
+                     decoding="async">
+                <div class="flex flex-col">
+                    <span class="hidden md:block text-primary font-bold text-headline-md font-headline-md leading-tight">GEC Bhuj</span>
+                    <span class="hidden md:block text-[10px] text-on-surface-variant font-label-sm uppercase tracking-tighter">Govt. Engineering College</span>
+                </div>
+            </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-8">
+                <a class="nav-link active font-label-md text-sm" href="index.html">Home</a>
+                <a class="nav-link font-label-md text-sm" href="about.html">About</a>
+                <a class="nav-link font-label-md text-sm" href="academics.html">Academics</a>
+                <a class="nav-link font-label-md text-sm" href="departments.html">Departments</a>
+                <a class="nav-link font-label-md text-sm" href="admissions.html">Admissions</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div class="relative hidden sm:block">
+                    <button id="quick-links-btn" class="flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg font-label-md text-sm hover:bg-primary-container transition-all duration-200 hover:shadow-lg">
+                        Quick Links
+                        <span class="material-symbols-outlined text-[18px] transition-transform duration-200" id="quick-links-icon">keyboard_arrow_down</span>
+                    </button>
+
+                    <div id="quick-links-dropdown" class="dropdown-menu">
+                        <div class="p-2">
+                            <a href="https://gate.iitkgp.ac.in/" target="_blank" class="dropdown-item">
+                                <span class="material-symbols-outlined">open_in_new</span>
+                                Official GATE Portal
+                            </a>
+                            <a href="https://www.aicte-india.org/feedback/students.php" target="_blank" class="dropdown-item">
+                                <span class="material-symbols-outlined">feedback</span>
+                                AICTE Feedback
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <span class="material-symbols-outlined">gavel</span>
+                                Anti Ragging Policy
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <span class="material-symbols-outlined">phone_in_talk</span>
+                                Women's Help Line
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <span class="material-symbols-outlined">assignment</span>
+                                Grievance Redressal
+                            </a>
+                            <div class="border-t border-outline-variant/20 my-1 mx-2"></div>
+                            <a href="#" class="dropdown-item">
+                                <span class="material-symbols-outlined">calendar_month</span>
+                                Academic Calendar
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <span class="material-symbols-outlined">local_library</span>
+                                Central Library
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="menu-toggle" class="lg:hidden text-primary p-2 hover:bg-surface-container rounded-lg transition-colors" aria-label="Toggle menu">
+                    <span class="material-symbols-outlined text-[28px]" id="menu-icon">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu lg:hidden">
+        <div class="flex flex-col h-full pt-24 px-8 pb-8">
+            <nav class="flex flex-col gap-2">
+                <a class="mobile-nav-link active bg-surface-container-low text-primary" href="index.html">Home</a>
+                <a class="mobile-nav-link" href="about.html">About</a>
+                <a class="mobile-nav-link" href="academics.html">Academics</a>
+                <a class="mobile-nav-link" href="departments.html">Departments</a>
+                <a class="mobile-nav-link" href="admissions.html">Admissions</a>
+            </nav>
+            <div class="mt-auto space-y-3 pt-8">
+                <a href="https://gate.iitkgp.ac.in/" target="_blank" class="flex items-center gap-3 px-6 py-4 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary hover:text-white transition-all">
+                    <span class="material-symbols-outlined">open_in_new</span>
+                    GATE Portal
+                </a>
+                <a href="https://www.aicte-india.org/feedback/students.php" target="_blank" class="flex items-center gap-3 px-6 py-4 rounded-xl bg-surface-container-low text-on-surface hover:bg-primary hover:text-white transition-all">
+                    <span class="material-symbols-outlined">feedback</span>
+                    AICTE Feedback
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative w-full min-h-[85vh] flex flex-col lg:flex-row overflow-hidden bg-primary pt-20">
+        <div class="lg:w-1/2 flex items-center px-6 md:px-16 py-20 lg:py-0">
+            <div class="max-w-2xl text-white">
+                <span class="animate-pulse-slow inline-block px-4 py-1.5 mb-6 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-xs uppercase tracking-wider">
+                    Established 1994
+                </span>
+                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-tight mb-6">
+                    Pioneering Engineering Excellence in Kutch
+                </h1>
+                <p class="font-body text-lg text-primary-fixed mb-10 opacity-90 leading-relaxed">
+                    The only Government institute in Kachchh district imparting undergraduate and postgraduate courses. Affiliated with GTU and approved by AICTE.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="academics.html" class="btn-primary text-lg">
+                        Explore Programs
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+                    <a href="admissions.html" class="btn-secondary text-lg">
+                        Admission 2025-26
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="lg:w-1/2 relative min-h-[400px] lg:min-h-full img-zoom">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/60 to-transparent lg:hidden z-10"></div>
+            <img alt="GEC Bhuj Campus" 
+                 class="absolute inset-0 w-full h-full object-cover" 
+                 src="c:\Users\Vasu\OneDrive\Desktop\gecb wesbite\assets\gec campus.jpg " 
+                 loading="eager"
+                 decoding="async">
+        </div>
+    </section>
+
+    <!-- Latest News & Updates -->
+    <section class="py-24 bg-surface px-6 md:px-16">
+        <div class="max-w-[1280px] mx-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4 reveal">
+                <div>
+                    <h2 class="font-display text-3xl text-primary mb-2">Latest News & Updates</h2>
+                    <p class="text-on-surface-variant font-body text-base">Stay updated with the latest circulars and events.</p>
+                </div>
+                <a class="text-secondary font-label-md text-sm flex items-center gap-1 hover:gap-2 transition-all" href="#">
+                    View All <span class="material-symbols-outlined text-[18px]">chevron_right</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <article class="news-card reveal">
+                    <div class="w-12 h-12 bg-primary-fixed text-on-primary-fixed rounded-xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined">campaign</span>
+                    </div>
+                    <span class="text-secondary font-label-sm text-xs uppercase tracking-widest mb-3 block">Announcement</span>
+                    <h3 class="font-display text-2xl text-primary mb-4">Hostel Admission Notice 2026-27</h3>
+                    <p class="text-on-surface-variant font-body text-base flex-grow">Admission notice for BE, D to D, and ME students for the upcoming academic session 2026-27 is now available.</p>
+                    <div class="mt-8 pt-6 border-t border-outline-variant flex justify-between items-center text-xs text-outline">
+                        <span>2026-27</span>
+                        <a class="text-primary font-bold hover:text-secondary transition-colors flex items-center gap-1" href="#">
+                            View PDF <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="news-card reveal" style="transition-delay: 100ms;">
+                    <div class="w-12 h-12 bg-secondary-fixed text-on-secondary-fixed rounded-xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined">rocket_launch</span>
+                    </div>
+                    <span class="text-secondary font-label-sm text-xs uppercase tracking-widest mb-3 block">Event</span>
+                    <h3 class="font-display text-2xl text-primary mb-4">National Startup Day Celebration</h3>
+                    <p class="text-on-surface-variant font-body text-base flex-grow">Various departments celebrated National Startup Day on 16/01/2025 to foster innovation and entrepreneurship.</p>
+                    <div class="mt-8 pt-6 border-t border-outline-variant flex justify-between items-center text-xs text-outline">
+                        <span>Jan 16, 2025</span>
+                        <a class="text-primary font-bold hover:text-secondary transition-colors flex items-center gap-1" href="#">
+                            Highlights <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+
+                <article class="news-card reveal" style="transition-delay: 200ms;">
+                    <div class="w-12 h-12 bg-tertiary-fixed text-on-tertiary-fixed rounded-xl flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined">school</span>
+                    </div>
+                    <span class="text-secondary font-label-sm text-xs uppercase tracking-widest mb-3 block">Academics</span>
+                    <h3 class="font-display text-2xl text-primary mb-4">Orientation 2025 for New Students</h3>
+                    <p class="text-on-surface-variant font-body text-base flex-grow">Orientation program for newly admitted students on 23rd June 2025. HODs provided valuable department information.</p>
+                    <div class="mt-8 pt-6 border-t border-outline-variant flex justify-between items-center text-xs text-outline">
+                        <span>Jun 23, 2025</span>
+                        <a class="text-primary font-bold hover:text-secondary transition-colors flex items-center gap-1" href="#">
+                            Details <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 md:px-16 bg-primary text-white">
+        <div class="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2 space-y-8 reveal">
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-10 h-1 bg-secondary-container rounded-full"></div>
+                    <span class="text-secondary-fixed font-label-sm text-xs uppercase tracking-wider">About Us</span>
+                </div>
+                <h2 class="font-display text-3xl text-secondary-fixed leading-tight">Government Engineering College, Bhuj</h2>
+                <div class="space-y-4 text-lg text-primary-fixed opacity-90 leading-relaxed">
+                    <p>Established in September 1994, GEC Bhuj is the only Government institute in Kachchh district imparting undergraduate and postgraduate courses in various engineering disciplines.</p>
+                    <p>The college is approved by AICTE, New Delhi, and affiliated with Gujarat Technological University (GTU), Ahmedabad. Our campus serves as a hub for technical excellence, grooming learners to lead global trends in engineering.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                    <div class="flex items-start gap-4 group">
+                        <div class="mt-1 w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center flex-shrink-0 group-hover:bg-secondary-container transition-colors duration-300">
+                            <span class="material-symbols-outlined text-secondary-fixed group-hover:text-on-secondary-container transition-colors">workspace_premium</span>
+                        </div>
+                        <div>
+                            <h4 class="font-display text-lg text-white">Centralized Admission</h4>
+                            <p class="text-primary-fixed opacity-80 text-sm">Processed through ACPC as per Government of Gujarat norms.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 group">
+                        <div class="mt-1 w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center flex-shrink-0 group-hover:bg-secondary-container transition-colors duration-300">
+                            <span class="material-symbols-outlined text-secondary-fixed group-hover:text-on-secondary-container transition-colors">school</span>
+                        </div>
+                        <div>
+                            <h4 class="font-display text-lg text-white">Advanced Academics</h4>
+                            <p class="text-primary-fixed opacity-80 text-sm">Offering 7 Bachelor and 2 Master degree programs.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="about.html" class="btn-primary mt-4 inline-flex">
+                    Learn More About Us
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="lg:w-1/2 grid grid-cols-2 gap-4 reveal">
+                <div class="stat-card bg-surface-container-highest/10 border border-white/10 hover:bg-white/5 hover:border-secondary-container">
+                    <span class="text-5xl font-display text-secondary-fixed mb-2">30+</span>
+                    <span class="font-label-md text-sm text-primary-fixed">Years of Legacy</span>
+                </div>
+                <div class="stat-card bg-secondary-container text-on-secondary-container hover:shadow-lg hover:shadow-secondary-container/30">
+                    <span class="text-5xl font-display mb-2">9</span>
+                    <span class="font-label-md text-sm font-bold">Total Programs</span>
+                </div>
+                <div class="stat-card bg-surface-container-highest/10 border border-white/10 hover:bg-white/5 hover:border-secondary-container">
+                    <span class="text-5xl font-display text-secondary-fixed mb-2">GTU</span>
+                    <span class="font-label-md text-sm text-primary-fixed">Affiliated</span>
+                </div>
+                <div class="stat-card bg-primary-container hover:shadow-lg hover:shadow-primary-container/30">
+                    <span class="text-5xl font-display text-secondary-fixed mb-2">AICTE</span>
+                    <span class="font-label-md text-sm text-primary-fixed">Approved</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="py-24 bg-surface-container-low px-6 md:px-16">
+        <div class="max-w-[1280px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bg-white p-12 rounded-3xl border border-outline-variant/30 ambient-card-shadow reveal">
+                    <div class="w-16 h-16 bg-secondary-fixed text-on-secondary-fixed rounded-2xl flex items-center justify-center mb-8">
+                        <span class="material-symbols-outlined text-4xl">visibility</span>
+                    </div>
+                    <h2 class="font-display text-3xl text-primary mb-6">Our Vision</h2>
+                    <p class="font-body text-lg text-on-surface-variant italic leading-relaxed border-l-4 border-secondary-container pl-6">
+                        "To optimize perseverance, quality and ethics in the higher technical education and research as can groom the learners into the owners of global trends in engineering."
+                    </p>
+                </div>
+
+                <div class="bg-white p-12 rounded-3xl border border-outline-variant/30 ambient-card-shadow reveal" style="transition-delay: 150ms;">
+                    <div class="w-16 h-16 bg-primary-fixed text-on-primary-fixed rounded-2xl flex items-center justify-center mb-8">
+                        <span class="material-symbols-outlined text-4xl">target</span>
+                    </div>
+                    <h2 class="font-display text-3xl text-primary mb-6">Our Mission</h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 group">
+                            <span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">check_circle</span>
+                            <p class="text-on-surface-variant font-body text-base">To facilitate the learners with fundamental and advanced technical knowledge in theory and practice.</p>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">check_circle</span>
+                            <p class="text-on-surface-variant font-body text-base">To facilitate the learning with concerned industrial exposure to the obtaining technology.</p>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <span class="material-symbols-outlined text-secondary mt-1 group-hover:scale-110 transition-transform">check_circle</span>
+                            <p class="text-on-surface-variant font-body text-base">To help the learners acquire professional ethics, acumen and zeal for research and entrepreneurship.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Preview Section -->
+    <section id="departments" class="py-24 bg-surface px-6 md:px-16">
+        <div class="max-w-[1280px] mx-auto">
+            <div class="text-center mb-20 reveal">
+                <span class="text-secondary font-label-sm text-xs uppercase tracking-wider mb-4 block">Our Programs</span>
+                <h2 class="font-display text-3xl text-primary mb-4">Undergraduate Programs</h2>
+                <div class="w-16 h-1 bg-secondary-container mx-auto rounded-full mb-6"></div>
+                <p class="text-on-surface-variant font-body text-lg max-w-2xl mx-auto">We offer seven comprehensive bachelor degree programs tailored to industrial needs.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="dept-card reveal">
+                    <div class="icon-wrapper">
+                        <span class="material-symbols-outlined text-5xl text-primary">settings_suggest</span>
+                    </div>
+                    <h4 class="font-display text-2xl text-primary mb-4">Mechanical Engineering</h4>
+                    <p class="dept-desc">Pushing the boundaries of design, analysis, and manufacturing.</p>
+                </div>
+                
+
+                <a href="electrical.html" class="dept-card reveal" style="transition-delay: 100ms; display: flex; flex-direction: column; align-items: center; text-align: center; color: inherit; text-decoration: none;">
+    <div class="icon-wrapper">
+        <span class="material-symbols-outlined text-5xl text-primary">bolt</span>
+    </div>
+    <h4 class="font-display text-2xl text-primary mb-4">Electrical Engineering</h4>
+    <p class="dept-desc">Empowering the future through advanced power systems and electronics.</p>
+</a>
+                <div class="dept-card reveal" style="transition-delay: 200ms;">
+                    <div class="icon-wrapper">
+                        <span class="material-symbols-outlined text-5xl text-primary">foundation</span>
+                    </div>
+                    <h4 class="font-display text-2xl text-primary mb-4">Civil Engineering</h4>
+                    <p class="dept-desc">Constructing the foundation of modern civilization and infrastructure.</p>
+                </div>
+
+                <div class="dept-card reveal">
+                    <div class="icon-wrapper">
+                        <span class="material-symbols-outlined text-5xl text-primary">science</span>
+                    </div>
+                    <h4 class="font-display text-2xl text-primary mb-4">Chemical Engineering</h4>
+                    <p class="dept-desc">Innovating process technologies for sustainable development.</p>
+                </div>
+
+                <div class="dept-card reveal" style="transition-delay: 100ms;">
+                    <div class="icon-wrapper">
+                        <span class="material-symbols-outlined text-5xl text-primary">eco</span>
+                    </div>
+                    <h4 class="font-display text-2xl text-primary mb-4">Environment Engineering</h4>
+                    <p class="dept-desc">Dedicated to protecting our planet through engineering excellence.</p>
+                </div>
+
+                <div class="dept-card reveal" style="transition-delay: 200ms;">
+                    <div class="icon-wrapper">
+                        <span class="material-symbols-outlined text-5xl text-primary">precision_manufacturing</span>
+                    </div>
+                    <h4 class="font-display text-2xl text-primary mb-4">Mining Engineering</h4>
+                    <p class="dept-desc">Exploring Earth's resources with safety and advanced technology.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-16 reveal">
+                <a href="departments.html" class="btn-outline text-lg">
+                    View All Departments
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions CTA Section -->
+    <section id="admissions" class="py-24 px-6 md:px-16 bg-primary text-white">
+        <div class="max-w-[1280px] mx-auto text-center reveal">
+            <span class="inline-block px-4 py-1.5 mb-6 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-xs uppercase tracking-wider">
+                Admissions Open
+            </span>
+            <h2 class="font-display text-5xl md:text-6xl leading-tight mb-6 max-w-3xl mx-auto">
+                Begin Your Engineering Journey
+            </h2>
+            <p class="font-body text-lg text-primary-fixed mb-10 opacity-90 max-w-2xl mx-auto">
+                Admissions for the academic year 2025-26 are now open. Apply through ACPC and secure your seat at Gujarat's premier government engineering institution.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="admissions.html" class="btn-primary text-lg">
+                    Apply Now
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+                <a href="#" class="btn-secondary text-lg">
+                    Download Brochure
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-tertiary text-white w-full pt-24 pb-12">
+        <div class="max-w-[1280px] mx-auto px-6 md:px-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white font-display text-lg">G</div>
+                        <h3 class="font-display text-xl text-white">GEC Bhuj</h3>
+                    </div>
+                    <p class="text-on-tertiary-container text-base">Empowering technical excellence since 1994. Affiliated with GTU and approved by AICTE.</p>
+                    <div class="flex gap-4">
+                        <a class="social-btn" href="#" aria-label="Share">
+                            <span class="material-symbols-outlined text-lg">share</span>
+                        </a>
+                        <a class="social-btn" href="#" aria-label="Website">
+                            <span class="material-symbols-outlined text-lg">public</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-label-md text-secondary-fixed font-bold mb-8 uppercase tracking-wider text-sm">Quick Links</h4>
+                    <ul class="space-y-4">
+                        <li><a class="footer-link" href="https://gate.iitkgp.ac.in/">Official GATE Portal</a></li>
+                        <li><a class="footer-link" href="https://www.aicte-india.org/feedback/students.php">AICTE Feedback</a></li>
+                        <li><a class="footer-link" href="#">Anti Ragging Policy</a></li>
+                        <li><a class="footer-link" href="#">Women's Help Line</a></li>
+                        <li><a class="footer-link" href="#">Grievance Redressal</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-label-md text-secondary-fixed font-bold mb-8 uppercase tracking-wider text-sm">Resources</h4>
+                    <ul class="space-y-4">
+                        <li><a class="footer-link" href="#">Central Library</a></li>
+                        <li><a class="footer-link" href="#">Hostel Facility</a></li>
+                        <li><a class="footer-link" href="#">Placement Cell</a></li>
+                        <li><a class="footer-link" href="#">RTI Details</a></li>
+                        <li><a class="footer-link" href="#">Academic Calendar</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-label-md text-secondary-fixed font-bold mb-8 uppercase tracking-wider text-sm">Contact</h4>
+                    <address class="not-italic text-on-tertiary-container space-y-6">
+                        <p class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-secondary-fixed text-lg mt-0.5">location_on</span>
+                            <span>Near Uma Nagar, New Raval Vadi Relocation Site, Bhuj-Kutch, Gujarat 370001</span>
+                        </p>
+                        <p class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-secondary-fixed text-lg">phone</span>
+                            <span>02832-231164</span>
+                        </p>
+                        <p class="flex items-center gap-3">
+                            <span class="material-symbols-outlined text-secondary-fixed text-lg">mail</span>
+                            <span>gec-bhuj-dte@gujarat.gov.in</span>
+                        </p>
+                    </address>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-on-tertiary-container opacity-80">
+                <p>© 2026 GEC Bhuj. All Rights Reserved.</p>
+                <div class="flex gap-8">
+                    <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+                    <a class="hover:text-white transition-colors" href="#">Terms of Use</a>
+                    <a class="hover:text-white transition-colors" href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Mobile Menu
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    let isMenuOpen = false;
+
+    function toggleMobileMenu() {
+        isMenuOpen = !isMenuOpen;
+        mobileMenu.classList.toggle('open', isMenuOpen);
+        menuIcon.textContent = isMenuOpen ? 'close' : 'menu';
+        document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    }
+
+    function closeMobileMenu() {
+        isMenuOpen = false;
+        mobileMenu.classList.remove('open');
+        menuIcon.textContent = 'menu';
+        document.body.style.overflow = '';
+    }
+
+    if (menuToggle) menuToggle.addEventListener('click', toggleMobileMenu);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && isMenuOpen) closeMobileMenu(); });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', closeMobileMenu));
+
+    // Quick Links Dropdown
+    const quickLinksBtn = document.getElementById('quick-links-btn');
+    const quickLinksDropdown = document.getElementById('quick-links-dropdown');
+    const quickLinksIcon = document.getElementById('quick-links-icon');
+    let isDropdownOpen = false;
+
+    function toggleDropdown(e) {
+        if (e) e.stopPropagation();
+        isDropdownOpen = !isDropdownOpen;
+        quickLinksDropdown.classList.toggle('open', isDropdownOpen);
+        quickLinksIcon.style.transform = isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+
+    function closeDropdown() {
+        isDropdownOpen = false;
+        quickLinksDropdown.classList.remove('open');
+        quickLinksIcon.style.transform = 'rotate(0deg)';
+    }
+
+    if (quickLinksBtn) quickLinksBtn.addEventListener('click', toggleDropdown);
+    document.addEventListener('click', (e) => {
+        if (quickLinksBtn && quickLinksDropdown && !quickLinksBtn.contains(e.target) && !quickLinksDropdown.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+
+    // Header Scroll Effect
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+        if (header) {
+            if (window.pageYOffset > 20) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        }
+    }, { passive: true });
+
+    // Intersection Observer for Scroll Reveals
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -60px 0px' };
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>

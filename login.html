@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal Login | GEC Bhuj EE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#001e40',
+                        'primary-container': '#003366',
+                        'primary-fixed': '#d5e3ff',
+                        secondary: '#825500',
+                        'secondary-container': '#fdab12',
+                        'secondary-fixed': '#ffddb3',
+                        'on-secondary-container': '#684300',
+                        surface: '#f8f9fa',
+                        'surface-container': '#edeeef',
+                        'surface-container-low': '#f3f4f5',
+                        'surface-container-lowest': '#ffffff',
+                        'on-primary': '#ffffff',
+                        'on-surface': '#191c1d',
+                        'on-surface-variant': '#43474f',
+                        outline: '#737780',
+                        'outline-variant': '#c3c6d1',
+                        error: '#ba1a1a',
+                        'error-container': '#ffdad6',
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        body: ['"Inter"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal; font-style: normal; font-size: 24px;
+            line-height: 1; letter-spacing: normal; text-transform: none;
+            display: inline-block; white-space: nowrap; word-wrap: normal;
+            direction: ltr; -webkit-font-feature-settings: 'liga';
+            font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased;
+            vertical-align: middle;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            background-image: radial-gradient(#00336608 2px, transparent 2px);
+            background-size: 32px 32px;
+        }
+
+        .glass-header {
+            background: rgba(248, 249, 250, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(195, 198, 209, 0.3);
+        }
+
+        .nav-link {
+            position: relative; text-decoration: none; padding-bottom: 4px;
+            color: #737780; transition: color 0.2s ease;
+        }
+        .nav-link::after {
+            content: ''; position: absolute; bottom: -2px; left: 0;
+            width: 0; height: 2px; background: #fdab12; border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: #001e40; }
+
+        .login-card {
+            background: #ffffff;
+            border: 1px solid rgba(195, 198, 209, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px -5px rgba(0, 51, 102, 0.08);
+            transition: box-shadow 0.3s ease;
+        }
+        .login-card:hover {
+            box-shadow: 0 20px 40px -10px rgba(0, 51, 102, 0.12);
+        }
+
+        .input-field {
+            width: 100%; padding: 12px 16px 12px 44px;
+            background: #ffffff;
+            border: 1px solid #c3c6d1;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+        .input-field:focus {
+            border-color: #001e40;
+            box-shadow: 0 0 0 3px rgba(0, 30, 64, 0.1);
+        }
+        .input-field.error {
+            border-color: #ba1a1a;
+            box-shadow: 0 0 0 3px rgba(186, 26, 26, 0.1);
+        }
+
+        .btn-login {
+            width: 100%; padding: 14px;
+            background: #003366; color: #ffffff;
+            border: none; border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px; font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .btn-login:hover:not(:disabled) {
+            background: #001e40;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(0, 30, 64, 0.2);
+        }
+        .btn-login:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            color: #ba1a1a;
+            font-size: 13px;
+            margin-top: 8px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+        }
+        .error-message.show {
+            display: flex;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .footer-link:hover { color: #ffddb3; }
+
+        /* Shake animation for wrong password */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="font-body text-on-surface antialiased min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="glass-header fixed top-0 z-50 w-full h-20 flex items-center">
+        <div class="max-w-[1280px] mx-auto w-full px-6 md:px-16 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 bg-primary rounded-xl flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined text-2xl">electric_bolt</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="hidden md:block text-primary font-bold text-lg font-display leading-tight">GEC Bhuj</span>
+                    <span class="hidden md:block text-[10px] text-on-surface-variant uppercase tracking-tighter">Electrical Engineering</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="nav-link text-sm" href="index.html">Home</a>
+                <a class="nav-link text-sm" href="index.html#programs">Programs</a>
+                <a class="nav-link text-sm" href="index.html#labs">Labs</a>
+                <a class="nav-link text-sm" href="index.html#faculty">Faculty</a>
+            </nav>
+
+            <a href="index.html" class="hidden sm:flex items-center gap-2 px-4 py-2 border border-primary text-primary rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition-all">
+                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                Back to Website
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center px-6 py-24 pt-32">
+        <div class="w-full max-w-md">
+            
+            <!-- Login Card -->
+            <div class="login-card p-8 md:p-10" id="loginCard">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 bg-primary-container rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <span class="material-symbols-outlined text-3xl text-secondary-container">person</span>
+                    </div>
+                    <h1 class="font-display text-2xl text-primary mb-2">Student Portal Login</h1>
+                    <p class="text-on-surface-variant text-sm">Enter your credentials to access your dashboard</p>
+                </div>
+
+                <form class="space-y-5" id="loginForm">
+                    <!-- Enrollment / Username -->
+                    <div>
+                        <label class="block text-sm font-medium text-on-surface-variant mb-2">Enrollment Number / Email</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">person</span>
+                            <input type="text" id="username" class="input-field" placeholder="e.g. 210150111001" required autocomplete="username">
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label class="block text-sm font-medium text-on-surface-variant mb-2">Password</label>
+                        <div class="relative">
+                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">lock</span>
+                            <input type="password" id="password" class="input-field" placeholder="••••••••" required autocomplete="current-password">
+                            <button type="button" onclick="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined text-[20px]" id="passwordIcon">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="error-message" id="errorMessage">
+                        <span class="material-symbols-outlined text-[16px]">error</span>
+                        <span id="errorText">Invalid credentials</span>
+                    </div>
+
+                    <!-- Forgot Password -->
+                    <div class="text-right">
+                        <a href="#" class="text-primary text-sm font-medium hover:text-secondary transition-colors">Forgot Password?</a>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="btn-login" id="loginBtn">
+                        <span id="btnText">Login to Portal</span>
+                        <span class="material-symbols-outlined text-[18px]" id="btnIcon">arrow_forward</span>
+                    </button>
+                </form>
+
+                <!-- Info -->
+                <div class="mt-8 pt-6 border-t border-outline-variant flex items-start gap-3">
+                    <div class="w-8 h-8 bg-secondary-fixed rounded-full flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-[16px] text-on-secondary-container">info</span>
+                    </div>
+                    <p class="text-on-surface-variant text-sm">New student? Your temporary password has been sent to your registered mobile number.</p>
+                </div>
+            </div>
+
+            <!-- Extra Links -->
+            <div class="mt-6 text-center flex items-center justify-center gap-4 text-sm">
+                <a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Faculty Login</a>
+                <span class="text-outline-variant">|</span>
+                <a href="#" class="text-on-surface-variant hover:text-primary transition-colors">Staff Login</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white w-full py-8">
+        <div class="max-w-[1280px] mx-auto px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-white/50 text-sm">© 2026 GEC Bhuj. All Rights Reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="footer-link text-sm">Privacy</a>
+                <a href="#" class="footer-link text-sm">Terms</a>
+                <a href="#" class="footer-link text-sm">Help Desk</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AUTH SCRIPT - Put this at the bottom of body -->
+    <script>
+        // ============================================
+        // AUTHENTICATION SYSTEM
+        // ============================================
+
+        // Demo users database (replace with real backend later)
+        const USERS = [
+            {
+                username: '240153109018',
+                password: '0000',
+                name: 'Vasu Pathak',
+                enrollment: '240153109018',
+                department: 'Electrical Engineering',
+                semester: 'Sem-6',
+                role: 'student'
+            },
+            {
+                username: 'admin',
+                password: 'admin123',
+                name: 'Dr. Admin',
+                enrollment: 'ADMIN001',
+                department: 'Electrical Engineering',
+                semester: 'N/A',
+                role: 'admin'
+            }
+        ];
+
+        // Check if already logged in - redirect to dashboard
+        (function checkExistingSession() {
+            const session = localStorage.getItem('gec_auth_session');
+            if (session) {
+                try {
+                    const data = JSON.parse(session);
+                    if (data.expires && new Date().getTime() < data.expires) {
+                        // Valid session exists, redirect to dashboard
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        // Expired session, clear it
+                        localStorage.removeItem('gec_auth_session');
+                    }
+                } catch(e) {
+                    localStorage.removeItem('gec_auth_session');
+                }
+            }
+        })();
+
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.getElementById('passwordIcon');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.textContent = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.textContent = 'visibility';
+            }
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const loginCard = document.getElementById('loginCard');
+            
+            errorText.textContent = message;
+            errorDiv.classList.add('show');
+            loginCard.classList.add('shake');
+            
+            // Highlight inputs
+            document.getElementById('username').classList.add('error');
+            document.getElementById('password').classList.add('error');
+            
+            setTimeout(() => {
+                loginCard.classList.remove('shake');
+            }, 500);
+        }
+
+        // Clear errors
+        function clearErrors() {
+            document.getElementById('errorMessage').classList.remove('show');
+            document.getElementById('username').classList.remove('error');
+            document.getElementById('password').classList.remove('error');
+        }
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearErrors();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const btn = document.getElementById('loginBtn');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            
+            // Validate inputs
+            if (!username || !password) {
+                showError('Please enter both username and password');
+                return;
+            }
+            
+            // Show loading state
+            btn.disabled = true;
+            btnText.textContent = 'Validating...';
+            btnIcon.textContent = 'sync';
+            btnIcon.classList.add('animate-spin');
+            
+            // Make real API request
+            fetch('http://localhost:5000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(err => { throw new Error(err.error || 'Invalid credentials'); });
+                }
+                return res.json();
+            })
+            .then(data => {
+                // SUCCESS - Create session with JWT token
+                const sessionData = {
+                    token: data.token,
+                    username: data.user.username,
+                    name: data.user.name,
+                    enrollment: data.user.enrollment,
+                    department: data.user.department,
+                    semester: data.user.semester,
+                    role: data.user.role,
+                    loginTime: new Date().toISOString(),
+                    // Session expires in 24 hours
+                    expires: new Date().getTime() + (24 * 60 * 60 * 1000)
+                };
+                
+                // Store in localStorage
+                localStorage.setItem('gec_auth_session', JSON.stringify(sessionData));
+                
+                // Show success and redirect
+                btnText.textContent = 'Welcome!';
+                btnIcon.textContent = 'check_circle';
+                btnIcon.classList.remove('animate-spin');
+                btn.style.background = '#2e7d32';
+                
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 800);
+            })
+            .catch(err => {
+                // FAILED - Show error
+                btn.disabled = false;
+                btnText.textContent = 'Login to Portal';
+                btnIcon.textContent = 'arrow_forward';
+                btnIcon.classList.remove('animate-spin');
+                showError(err.message || 'Server connection failed.');
+            });
+        });
+
+        // Clear errors on input
+        document.getElementById('username').addEventListener('input', clearErrors);
+        document.getElementById('password').addEventListener('input', clearErrors);
+    </script>
+</body>
+</html>

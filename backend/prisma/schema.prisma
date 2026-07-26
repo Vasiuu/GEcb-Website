@@ -1,0 +1,131 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LEAVE
+  MEDICAL_OD
+}
+
+model User {
+  id              Int              @id @default(autoincrement())
+  username        String           @unique
+  password        String
+  name            String
+  role            Role
+  departmentId    Int?
+  department      Department?      @relation(fields: [departmentId], references: [id])
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  
+  // Relations
+  student         Student?
+  teacherSubjects TeacherSubject[]
+  lectures        Lecture[]
+}
+
+model Department {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  users     User[]
+  students  Student[]
+  subjects  Subject[]
+  lectures  Lecture[]
+}
+
+model Semester {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  students  Student[]
+  lectures  Lecture[]
+}
+
+model Division {
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  students  Student[]
+  lectures  Lecture[]
+}
+
+model Subject {
+  id              Int              @id @default(autoincrement())
+  name            String
+  code            String           @unique
+  departmentId    Int
+  department      Department       @relation(fields: [departmentId], references: [id])
+  
+  // Relations
+  teacherSubjects TeacherSubject[]
+  lectures        Lecture[]
+}
+
+model TeacherSubject {
+  id        Int     @id @default(autoincrement())
+  teacherId Int
+  teacher   User    @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  subjectId Int
+  subject   Subject @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+
+  @@unique([teacherId, subjectId])
+}
+
+model Student {
+  id           Int          @id @default(autoincrement())
+  userId       Int          @unique
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  enrollment   String       @unique
+  departmentId Int
+  department   Department   @relation(fields: [departmentId], references: [id])
+  semesterId   Int
+  semester     Semester     @relation(fields: [semesterId], references: [id])
+  divisionId   Int
+  division     Division     @relation(fields: [divisionId], references: [id])
+  
+  // Relations
+  attendances  Attendance[]
+}
+
+model Lecture {
+  id            Int          @id @default(autoincrement())
+  subjectId     Int
+  subject       Subject      @relation(fields: [subjectId], references: [id])
+  departmentId  Int
+  department    Department   @relation(fields: [departmentId], references: [id])
+  semesterId    Int
+  semester      Semester     @relation(fields: [semesterId], references: [id])
+  divisionId    Int
+  division      Division     @relation(fields: [divisionId], references: [id])
+  date          DateTime
+  lectureNumber Int
+  teacherId     Int
+  teacher       User         @relation(fields: [teacherId], references: [id])
+  
+  // Relations
+  attendances   Attendance[]
+
+  @@unique([subjectId, departmentId, semesterId, divisionId, date, lectureNumber])
+}
+
+model Attendance {
+  id        Int              @id @default(autoincrement())
+  lectureId Int
+  lecture   Lecture          @relation(fields: [lectureId], references: [id], onDelete: Cascade)
+  studentId Int
+  student   Student          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  status    AttendanceStatus
+
+  @@unique([lectureId, studentId])
+}
